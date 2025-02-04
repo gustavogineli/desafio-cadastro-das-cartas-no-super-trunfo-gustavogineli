@@ -1,41 +1,49 @@
 #include <stdio.h>
 
-int main(){
-    int codigo;
+
+int main() {
+    char codigo[10];  
     char nome[50];
-    double populacao;
+    float populacao;
     float area, pib, turisticos;
 
-    printf("Digite o código da cidade:\n");
-    scanf("%d, &codigo");
+    // Leitura do código da cidade 
+    printf("Digite o código da cidade (ex: A01):\n");
+    fgets(codigo, sizeof(codigo), stdin);
+  
+    codigo[strcspn(codigo, "\n")] = '\0';
 
+    // Leitura do nome da cidade
     printf("Digite o nome da cidade: \n");
-    scanf("%s", &nome);
+    fgets(nome, sizeof(nome), stdin);
+  
+    nome[strcspn(nome, "\n")] = '\0';
 
+    // Leitura da população da cidade
     printf("Digite a população da cidade: \n");
     scanf("%f", &populacao);
 
-    printf("Digite a area da cidade: \n");
+    // Leitura da área da cidade
+    printf("Digite a área da cidade (em km²): \n");
     scanf("%f", &area);
 
-    printf("Digite o PIB da cidade: \n");
+    // Leitura do PIB da cidade
+    printf("Digite o PIB da cidade (em bilhões): \n");
     scanf("%f", &pib);
 
-    printf ("Digite a quantidade de pontos turisticos:\n");
+    // Leitura do número de pontos turísticos
+    printf("Digite o número de pontos turísticos:\n");
     scanf("%f", &turisticos);
 
-    printf("Código da cidade: %d\n",codigo );
+    // Exibição dos dados inseridos
+    printf("\nDados da cidade:\n");
+    printf("Código da cidade: %s\n", codigo);
     printf("Nome da cidade: %s\n", nome);
-    printf("População: %f \n", populacao);
-    printf("Area: %f \n" ,area);
-    print("PIB: %f \n" ,pib);
-    printf("Número de pontos turísticos: %f", turisticos);
+    printf("População: %.2f \n", populacao);
+    printf("Área: %.2f km²\n", area);
+    printf("PIB: %.2f bilhões\n", pib);
+    printf("Número de pontos turísticos: %.2f\n", turisticos);
 
     return 0;
-
-
-
-
-    
-
 }
+
