@@ -1,49 +1,58 @@
 #include <stdio.h>
 
-
 int main() {
-    char codigo[10];  
-    char nome[50];
-    float populacao;
-    float area, pib, turisticos;
+   
+    char nomeEstado[50], nomeCidade[50];
+    float populacao, area, pib;
+    int pontosTuristicos;
 
-    // Leitura do código da cidade 
-    printf("Digite o código da cidade (ex: A01):\n");
-    fgets(codigo, sizeof(codigo), stdin);
-  
-    codigo[strcspn(codigo, "\n")] = '\0';
+    // cadastrar 8 estados, com 4 cidades por estado
+    for (char estado = 'A'; estado <= 'H'; estado++) {  // De A a H (8 estados)
+        //  nome do estado
+        printf("\nDigite o nome do estado %c:\n", estado);
+        fgets(nomeEstado, sizeof(nomeEstado), stdin);  // 
+        
+        // Exibindo o nome do estado
+        printf("Estado %c: %s\n", estado, nomeEstado);
+        
+        //  cadastrar as 4 cidades do estado
+        for (int i = 1; i <= 4; i++) {  // 4 cidades por estado
+            // Gerando o código da cidade no formato "Letra + Número" 
+            char codigo[5];
+            sprintf(codigo, "%c%02d", estado, i);
 
-    // Leitura do nome da cidade
-    printf("Digite o nome da cidade: \n");
-    fgets(nome, sizeof(nome), stdin);
-  
-    nome[strcspn(nome, "\n")] = '\0';
+            // Exibindo informações de cadastro para o usuário
+            printf("\nCadastro da cidade %s\n", codigo);
 
-    // Leitura da população da cidade
-    printf("Digite a população da cidade: \n");
-    scanf("%f", &populacao);
+            // Pegando os dados da cidade
+            printf("Digite o nome da cidade: ");
+            fgets(nomeCidade, sizeof(nomeCidade), stdin); 
 
-    // Leitura da área da cidade
-    printf("Digite a área da cidade (em km²): \n");
-    scanf("%f", &area);
+            printf("Digite a população da cidade: ");
+            scanf("%f", &populacao);
 
-    // Leitura do PIB da cidade
-    printf("Digite o PIB da cidade (em bilhões): \n");
-    scanf("%f", &pib);
+            printf("Digite a área da cidade (em km²): ");
+            scanf("%f", &area);
 
-    // Leitura do número de pontos turísticos
-    printf("Digite o número de pontos turísticos:\n");
-    scanf("%f", &turisticos);
+            printf("Digite o PIB da cidade (em bilhões): ");
+            scanf("%f", &pib);
 
-    // Exibição dos dados inseridos
-    printf("\nDados da cidade:\n");
-    printf("Código da cidade: %s\n", codigo);
-    printf("Nome da cidade: %s\n", nome);
-    printf("População: %.2f \n", populacao);
-    printf("Área: %.2f km²\n", area);
-    printf("PIB: %.2f bilhões\n", pib);
-    printf("Número de pontos turísticos: %.2f\n", turisticos);
+            printf("Digite o número de pontos turísticos: ");
+            scanf("%d", &pontosTuristicos);
+
+            
+            getchar(); 
+
+            // Exibindo os dados da cidade cadastrada
+            printf("\nDados cadastrados para a cidade %s:\n", codigo);
+            printf("Nome: %s", nomeCidade); 
+            printf("População: %.2f\n", populacao);
+            printf("Área: %.2f km²\n", area);
+            printf("PIB: %.2f bilhões\n", pib);
+            printf("Pontos turísticos: %d\n", pontosTuristicos);
+            printf("---------------------------------------------\n");
+        }
+    }
 
     return 0;
 }
-
